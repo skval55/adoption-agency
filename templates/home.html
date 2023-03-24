@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Animals{% endblock %}
+
+{% block content %}
+
+<a class=" btn btn-outline-success" href="/add">Add Animal</a>
+<div class="d-flex flex-wrap justify-content-between">
+    {% for animal in animals %}
+
+    <div class=" w-25 h-100 m-3">
+        <img class="border border-info rounded" src="{{animal.photo_url}}" alt="">
+        <div class="">
+            {% if animal.available == True %}
+            <div>{{animal.name}} is
+                <b>Available!</b>
+            </div>
+            <a class="btn btn-primary text-center" href="/{{animal.id}}">
+                See my Page!
+            </a>
+            {% else %}
+            <div>{{animal.name}}</div>
+            <a class="btn btn-primary text-center" href="/{{animal.id}}">
+                See my Page!
+            </a>
+            {% endif %}
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}
